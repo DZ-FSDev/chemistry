@@ -12,13 +12,13 @@ import org.openscience.cdk.smiles.SmilesParser;
 import net.sf.jniinchi.INCHI_RET;
 
 /**
- * Command-line SMILES translator to INCHI.
+ * Command-line SMILES translator to InChI.
  *
  * @author DZ-FSDev
  * @since 16.0.1
  * @version 0.0.1
  */
-public class SmilesToINCHI {
+public class SmilesToInChI {
 	public static void main(String[] args) {
 		if(args.length > 0) {
 			IChemObjectBuilder chemBuilder = SilentChemObjectBuilder.getInstance();
