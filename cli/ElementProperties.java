@@ -1,13 +1,20 @@
 package com.dz_fs_dev.chemistry.cli;
 
+import java.io.IOException;
+
+import org.openscience.cdk.Atom;
+import org.openscience.cdk.Isotope;
 import org.openscience.cdk.config.Elements;
+import org.openscience.cdk.config.Isotopes;
+import org.openscience.cdk.interfaces.IAtom;
+import org.openscience.cdk.interfaces.IIsotope;
 
 /**
  * Command-line display of atomic properties given an element.
  *
  * @author DZ-FSDev
- * @since 16.0.1
- * @version 0.0.2
+ * @since 17.0.1
+ * @version 0.0.3
  */
 public class ElementProperties {
 	public static void main(String[] args) {
@@ -22,6 +29,15 @@ public class ElementProperties {
 			System.out.println("Electronegativity:\t" + element.electronegativity());
 			System.out.println("Covalent Radius:\t" + element.covalentRadius());
 			System.out.println("VDW Radius:\t" + element.vdwRadius());
+			
+			IIsotope isotope;
+			try {
+				isotope = Isotopes.getInstance().getMajorIsotope(element.symbol());
+				System.out.println("Natural Abundance:\t" + isotope.getNaturalAbundance());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 		}else if(args.length == 1 && args[0].equals("/?")){
 			System.out.println("Expected argument list: element");
 			System.out.println();
