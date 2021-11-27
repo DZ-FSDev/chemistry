@@ -2,11 +2,8 @@ package com.dz_fs_dev.chemistry.cli;
 
 import java.io.IOException;
 
-import org.openscience.cdk.Atom;
-import org.openscience.cdk.Isotope;
 import org.openscience.cdk.config.Elements;
 import org.openscience.cdk.config.Isotopes;
-import org.openscience.cdk.interfaces.IAtom;
 import org.openscience.cdk.interfaces.IIsotope;
 
 /**
@@ -14,7 +11,7 @@ import org.openscience.cdk.interfaces.IIsotope;
  *
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.3
+ * @version 0.0.4
  */
 public class ElementProperties {
 	public static void main(String[] args) {
@@ -34,6 +31,7 @@ public class ElementProperties {
 			try {
 				isotope = Isotopes.getInstance().getMajorIsotope(element.symbol());
 				System.out.println("Natural Abundance:\t" + isotope.getNaturalAbundance());
+				System.out.println("Mass:\t" + isotope.getExactMass());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
