@@ -1,7 +1,5 @@
 package com.dz_fs_dev.chemistry.cli;
 
-import java.io.IOException;
-
 import org.openscience.cdk.config.Elements;
 import org.openscience.cdk.config.Isotopes;
 import org.openscience.cdk.interfaces.IIsotope;
@@ -11,7 +9,7 @@ import org.openscience.cdk.interfaces.IIsotope;
  *
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.5
+ * @version 0.0.6
  */
 public class ElementProperties {
 	public static void main(String[] args) {
@@ -29,18 +27,20 @@ public class ElementProperties {
 			
 			IIsotope isotope;
 			try {
-				isotope = Isotopes.getInstance().getMajorIsotope(element.symbol());
+				isotope = args.length > 1 ?
+						Isotopes.getInstance().getIsotope(element.symbol(), Integer.parseInt(args[1])) :
+						Isotopes.getInstance().getMajorIsotope(element.symbol());
+				
 				System.out.println("Isotope:\t" + element.symbol() + isotope.getMassNumber());
 				System.out.println("Natural Abundance:\t" + isotope.getNaturalAbundance());
 				System.out.println("Mass:\t" + isotope.getExactMass());
-			} catch (IOException e) {
+			} catch (Exception e) {
 				System.out.println("Isotope Data Not Available");
 				//e.printStackTrace();
 			}
 			
 		}else if(args.length == 1 && args[0].equals("/?")){
-			System.out.println("Expected argument list: element [mass number]"); //TODO
-			System.out.println();
+			System.out.println("Expected argument list: element [mass number]");
 		}else {
 			System.out.println("Invalid arguments were provided. Use /? for more information.");
 		}
