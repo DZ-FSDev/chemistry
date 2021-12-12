@@ -18,7 +18,7 @@ import java.util.Optional;
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.2
+ * @version 0.0.4
  */
 @RestController
 @RequestMapping("/SMILES")
@@ -29,16 +29,30 @@ public class RESTController_SMILES {
 	/**
 	 * Returns a generated PNG byte array representation of the requested SMILES.
 	 * 
-	 * @param barcode
+	 * @param smiles
 	 * @param caption
+	 * @return The generated PNG byte array representation of the requested SMILES.
+	 * @throws CDKException
 	 * @throws IOException
-	 * @throws WriterException
-	 * @return The generated PNG byte array representation of the requested EAN13 barcode.
-	 * @throws CDKException 
-	 * @since 0.0.2
+	 * @since 0.0.4
 	 */
 	@GetMapping(value = "/{smiles}", produces = MediaType.IMAGE_PNG_VALUE)
-	public byte[] getEAN13Barcode(@PathVariable("smiles") String smiles, Optional<String> caption) throws CDKException, IOException {
+	public byte[] getSMILESAsPNG(@PathVariable("smiles") String smiles, Optional<String> caption) throws CDKException, IOException {
 		return smiSvc.getSMILEStoPNGbytes(smiles, caption);
+	}
+	
+	/**
+	 * Returns a generated PNG byte array representation of the requested InChI.
+	 * 
+	 * @param inchi
+	 * @param caption
+	 * @return The generated PNG byte array representation of the requested InChI.
+	 * @throws CDKException
+	 * @throws IOException
+	 * @since 0.0.4
+	 */
+	@GetMapping(value = "/{InChI}", produces = MediaType.IMAGE_PNG_VALUE)
+	public byte[] getInChIAsPNG(@PathVariable("smiles") String inchi, Optional<String> caption) throws CDKException, IOException {
+		return smiSvc.getInChItoPNGbytes(inchi, caption);
 	}
 }
