@@ -9,7 +9,7 @@ import org.openscience.cdk.interfaces.IIsotope;
  *
  * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.6
+ * @version 0.0.7
  */
 public class ElementProperties {
 	public static void main(String[] args) {
@@ -21,9 +21,9 @@ public class ElementProperties {
 			System.out.println("Group:\t" + element.group());
 			System.out.println("Period:\t" + element.period());
 			System.out.println("Metal:\t" + Elements.isMetal(element.number()));
-			System.out.println("Electronegativity:\t" + element.electronegativity());
+			System.out.println("Pauling Electronegativity:\t" + element.electronegativity());
 			System.out.println("Covalent Radius:\t" + element.covalentRadius());
-			System.out.println("VDW Radius:\t" + element.vdwRadius());
+			System.out.println("Vanderwaals Radius:\t" + element.vdwRadius());
 			
 			IIsotope isotope;
 			try {
