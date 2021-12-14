@@ -14,11 +14,11 @@ import java.io.IOException;
 import java.util.Optional;
 
 /**
- * UPC REST Service Controller.
+ * SMILES REST Service Controller.
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.4
+ * @version 0.0.5
  */
 @RestController
 @RequestMapping("/SMILES")
@@ -34,25 +34,10 @@ public class RESTController_SMILES {
 	 * @return The generated PNG byte array representation of the requested SMILES.
 	 * @throws CDKException
 	 * @throws IOException
-	 * @since 0.0.4
+	 * @since 0.0.5
 	 */
 	@GetMapping(value = "/{smiles}", produces = MediaType.IMAGE_PNG_VALUE)
 	public byte[] getSMILESAsPNG(@PathVariable("smiles") String smiles, Optional<String> caption) throws CDKException, IOException {
 		return smiSvc.getSMILEStoPNGbytes(smiles, caption);
-	}
-	
-	/**
-	 * Returns a generated PNG byte array representation of the requested InChI.
-	 * 
-	 * @param inchi
-	 * @param caption
-	 * @return The generated PNG byte array representation of the requested InChI.
-	 * @throws CDKException
-	 * @throws IOException
-	 * @since 0.0.4
-	 */
-	@GetMapping(value = "/{InChI}", produces = MediaType.IMAGE_PNG_VALUE)
-	public byte[] getInChIAsPNG(@PathVariable("smiles") String inchi, Optional<String> caption) throws CDKException, IOException {
-		return smiSvc.getInChItoPNGbytes(inchi, caption);
 	}
 }
