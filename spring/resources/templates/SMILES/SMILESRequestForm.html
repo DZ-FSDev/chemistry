@@ -8,7 +8,6 @@
 <body>
 	<h1>Submit your SMILES</h1>
     <form action="#" th:action="@{/smiReq}" th:object="${smiReq}" method="post">
-    	<p>Id: <input type="text" th:field="*{id}" /></p>
         <p>SMILES: <input type="text" th:field="*{smilesString}" /></p>
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>
