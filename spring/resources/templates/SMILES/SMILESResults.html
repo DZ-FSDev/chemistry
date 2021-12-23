@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See the SMILES!</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+</head>
+<body>
+    <p>
+		Current time is <span th:text="${serverTime}" />
+	</p>
+    <img th:src="${smilessrc}" alt="a SMILES depiction"/>
+    <p>
+		<span th:text="${smiles}" />
+	</p>
+</body>
+</html>
