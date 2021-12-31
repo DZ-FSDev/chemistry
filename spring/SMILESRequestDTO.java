@@ -1,50 +1,24 @@
 package com.dz_fs_dev.chemistry.spring;
 
 /**
- * SMILES Request DTO.
+ * SMILES Request DTO. May also contain SMARTS or SMIRKS.
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.1
+ * @version 0.0.2
  */
 public class SMILESRequestDTO {
-	private long id;
 	private String smilesString;
-		
-	/**
-	 * 
-	 */
-	public SMILESRequestDTO() {
-	}
 
+	public SMILESRequestDTO() {}
+	
 	/**
-	 * @param smilesString
+	 * Constructs a SMILES/SMARTS/SMIRKS DTO.
+	 * 
+	 * @param smilesString The wrapped SMILES/SMARTS/SMIRKS.
 	 */
 	public SMILESRequestDTO(String smilesString) {
 		this.setSmilesString(smilesString);
-	}
-
-	/**
-	 * @param id
-	 * @param smilesString
-	 */
-	public SMILESRequestDTO(long id, String smilesString) {
-		this.id = id;
-		this.smilesString = smilesString;
-	}
-
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	/**
@@ -57,16 +31,21 @@ public class SMILESRequestDTO {
 	}
 
 	/**
-	 * Sets the smilesString.
+	 * Sets the SMILES/SMARTS/SMIRKS.
 	 * 
-	 * @param smiString the smilesString to set
+	 * @param smiString The SMILES/SMARTS/SMIRKS to set.
 	 */
 	public void setSmilesString(String smilesString) {
 		this.smilesString = smilesString;
 	}
 
+	/**
+	 * Returns the JSON representation of the SMILESRequestDTO.
+	 * 
+	 * @return The JSON representation of the SMILESRequestDTO.
+	 */
 	@Override
 	public String toString() {
-		return "SMILESRequestDTO [id=" + id + ", smilesString=" + smilesString + "]";
+		return "SMILESRequestDTO {\"smilesString\"=\"" + smilesString + "\"]";
 	}
 }
