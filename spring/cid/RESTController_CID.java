@@ -16,7 +16,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.dz_fs_dev.chemistry.spring;
+package com.dz_fs_dev.chemistry.spring.cid;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.1
+ * @version 0.0.2
  */
 @RestController("api/v1/CID")
 public class RESTController_CID {
@@ -39,17 +39,34 @@ public class RESTController_CID {
 	CIDService cidsvc;
 	
 	/**
+	 * Returns the SMILES equivalent of the requested chemical identifier.
 	 * 
-	 * 
-	 * @param cid
-	 * @return
-	 * @throws NumberFormatException
-	 * @throws MalformedURLException
-	 * @throws IOException
-	 * @throws Exception
+	 * @param cid The requested chemical identifier to be converted.
+	 * @return The SMILES equivalent of the chemical identifier.
+	 * @throws NumberFormatException Thrown if an invalid chemical identifier has been provided.
+	 * @throws MalformedURLException Thrown if PubChem was unable to be accessed.
+	 * @throws IOException Thrown if PubChem was unable to be accessed.
+	 * @throws Exception Thrown for any other failures. //TODO
+	 * @since 0.0.1
 	 */
 	@GetMapping("/toSMILES")
 	public String getSMILES(@PathVariable String cid) throws NumberFormatException, MalformedURLException, IOException, Exception {
 		return cidsvc.toSMILES(Long.parseLong(cid));
+	}
+
+	/**
+	 * Returns the InChI equivalent of the requested chemical identifier.
+	 * 
+	 * @param cid The requested chemical identifier to be converted.
+	 * @return The InChI equivalent of the chemical identifier.
+	 * @throws NumberFormatException Thrown if an invalid chemical identifier has been provided.
+	 * @throws MalformedURLException Thrown if PubChem was unable to be accessed.
+	 * @throws IOException Thrown if PubChem was unable to be accessed.
+	 * @throws Exception Thrown for any other failures. //TODO
+	 * @since 0.0.2
+	 */
+	@GetMapping("/toInChI")
+	public String getInChI(@PathVariable String cid) throws NumberFormatException, MalformedURLException, IOException, Exception {
+		return cidsvc.toInChI(Long.parseLong(cid));
 	}
 }
