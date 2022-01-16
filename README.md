@@ -8,7 +8,7 @@ Contains command-line chemoinformatics clients.
 ##### Depicts any molecule or reaction with optional caption and atom numbering.
 - [ ] InChI canonical standard service layers
 - [ ] Add options to show molecular properties such as molecular weight and abundance.
-![Sample: Vitamin B6 Depiction](/spring/VitaminB6Depiction.png)
+<img src="/spring/VitaminB6Depiction.png" alt="Sample: Vitamin B6 Depiction" style="width:62%;"/> <img src="/spring/BMS687453_Depiction.png" alt="Sample: BMS 687453 Depiction" style="width:36%;"/>
 ##### Depicts any molecule or reaction with functional group highlighting.
 - [ ] Add more functional groups.
 - [ ] Add functional group user defined list extensions.
