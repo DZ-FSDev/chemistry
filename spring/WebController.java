@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.dz_fs_dev.chemistry.spring.smiles.SMILESRequestDTO;
+
 /**
  * SMILES Web Service Controller.
  * 
- * @author DZ_FSDev
+ * @author DZ-FSDev
  * @since 17.0.1
- * @version 0.0.4
+ * @version 0.0.5
  */
 @Controller
 public class WebController {
@@ -23,8 +25,8 @@ public class WebController {
 	/**
 	 * Renders the simple SMILES Request page view.
 	 * 
-	 * @param model
-	 * @return
+	 * @param model The model attributes to be applied to the view.
+	 * @return The simple SMILES Request page view.
 	 * @since 0.0.1
 	 */
 	@GetMapping("/smiReq")
@@ -36,9 +38,9 @@ public class WebController {
 	/**
 	 * Renders the simple SMILES Results page view.
 	 * 
-	 * @param smiReq
-	 * @param model
-	 * @return
+	 * @param smiReq The posted SMILES to be requested.
+	 * @param model The model attributes to be applied to the view.
+	 * @return The simple SMILES Results page view.
 	 * @since 0.0.4
 	 */
 	@PostMapping("/smiReq")
