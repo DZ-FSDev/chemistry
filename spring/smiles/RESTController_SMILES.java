@@ -16,12 +16,13 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.dz_fs_dev.chemistry.spring;
+package com.dz_fs_dev.chemistry.spring.smiles;
 
 import org.openscience.cdk.exception.CDKException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,10 +34,10 @@ import java.util.Optional;
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.6
+ * @version 0.0.7
  */
 @RestController
-@RequestMapping("/v1/SMILES")
+@RequestMapping("api/v1/SMILES")
 public class RESTController_SMILES {
 	@Autowired
 	SMILESservice smiSvc;
@@ -44,16 +45,31 @@ public class RESTController_SMILES {
 	/**
 	 * Returns a generated PNG byte array representation of the requested SMILES.
 	 * 
-	 * @param smiles
-	 * @param caption
-	 * @param numbered
+	 * @param smiles The requested SMILES for depiction.
+	 * @param caption A user-defined caption to be affixed to the depiction.
+	 * @param numbered Whether the atoms should be numbered.
 	 * @return The generated PNG byte array representation of the requested SMILES.
-	 * @throws CDKException
-	 * @throws IOException
+	 * @throws CDKException Thrown if the depiction failed.
+	 * @throws IOException Thrown if the byte array was unable to be written.
 	 * @since 0.0.6
 	 */
 	@GetMapping(value = "/generate/{smiles}", produces = MediaType.IMAGE_PNG_VALUE)
-	public byte[] getSMILESAsPNG(String smiles, Optional<String> caption, Optional<Boolean> numbered) throws CDKException, IOException {
+	public byte[] getSMILESAsPNG(@PathVariable("smiles") String smiles, Optional<String> caption, Optional<Boolean> numbered) throws CDKException, IOException {
 		return smiSvc.getSMILEStoPNGbytes(smiles, caption, numbered);
+	}
+
+	/**
+	 * Returns a generated animated GIF byte array representation of the requested SMILES.
+	 * 
+	 * @param smiles
+	 * @param caption
+	 * @return The generated PNG byte array representation of the requested SMILES.
+	 * @throws CDKException
+	 * @throws IOException
+	 * @since 0.0.5
+	 */
+	@GetMapping(value = "/generate/ani/{smiles}", produces = MediaType.IMAGE_GIF_VALUE)
+	public byte[] getSMILESAsGIF(@PathVariable("smiles")String smiles, Optional<String> caption) throws CDKException, IOException {
+		return smiSvc.getSMILEStoGIFbytes(smiles, caption);
 	}
 }
