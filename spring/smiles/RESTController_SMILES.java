@@ -34,7 +34,7 @@ import java.util.Optional;
  * 
  * @author DZ_FSDev
  * @since 17.0.1
- * @version 0.0.7
+ * @version 0.0.8
  */
 @RestController
 @RequestMapping("api/v1/SMILES")
@@ -71,5 +71,17 @@ public class RESTController_SMILES {
 	@GetMapping(value = "/generate/ani/{smiles}", produces = MediaType.IMAGE_GIF_VALUE)
 	public byte[] getSMILESAsGIF(@PathVariable("smiles")String smiles, Optional<String> caption) throws CDKException, IOException {
 		return smiSvc.getSMILEStoGIFbytes(smiles, caption);
+	}
+	
+	/**
+	 * Returns an InChI string given a SMILES string; or null if unable to do so. 
+	 * 
+	 * @param smiles The specified SMILES string to be converted.
+	 * @return An InChI string given a SMILES string; or null if unable to do so.
+	 * @since 0.0.8
+	 */
+	@GetMapping("/toInChI/{smiles}")
+	public String getInChI(@PathVariable("smiles")String smiles) {
+		return smiSvc.getInChIfromSMILES(smiles);
 	}
 }
