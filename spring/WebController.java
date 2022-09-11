@@ -15,7 +15,7 @@ import com.dz_fs_dev.chemistry.spring.smiles.SMILESRequestDTO;
  * SMILES Web Service Controller.
  * 
  * @author DZ-FSDev
- * @since 17.0.1
+ * @since 17.0.2
  * @version 0.0.5
  */
 @Controller
@@ -49,5 +49,16 @@ public class WebController {
 		model.addAttribute("smilessrc", "/v1/SMILES/generate/" + smiReq.getSmilesString());
 		model.addAttribute("smiles", smiReq.getSmilesString());
 		return "SMILES/SMILESResults";
+	}
+	
+	/**
+	 * 
+	 * 
+	 * @return The index page view.
+	 * @since 0.0.5
+	 */
+	@GetMapping()
+	public String index() {
+		return "index";
 	}
 }
