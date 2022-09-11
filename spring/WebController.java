@@ -16,7 +16,7 @@ import com.dz_fs_dev.chemistry.spring.smiles.SMILESRequestDTO;
  * 
  * @author DZ-FSDev
  * @since 17.0.2
- * @version 0.0.5
+ * @version 0.0.6
  */
 @Controller
 public class WebController {
@@ -55,10 +55,10 @@ public class WebController {
 	 * 
 	 * 
 	 * @return The index page view.
-	 * @since 0.0.5
+	 * @since 0.0.6
 	 */
 	@GetMapping()
 	public String index() {
-		return "index";
+		return "index.html";
 	}
 }
